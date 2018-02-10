@@ -1,0 +1,19 @@
+{
+  "name": "surreal",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/surrealdb/surreal.js.git"
+  },
+  "author": "Tobie Morgan Hitchcock <tobie@abcum.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^4.0.0"
+  },
+  "devDependencies": {}
+}
