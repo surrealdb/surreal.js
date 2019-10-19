@@ -2,10 +2,9 @@ const path = require('path');
 
 module.exports = {
 	entry: './index.js',
-	target: 'web',
 	output: {
 		path: path.join(__dirname, 'dist'),
-		libraryTarget: 'umd',
+		libraryTarget: 'window',
 		library: 'Surreal'
 	},
 	devtool: 'none',
