@@ -3,7 +3,10 @@
   "version": "0.2.0",
   "description": "",
   "main": "index.js",
+  "browser": "dist/main.js",
   "scripts": {
+    "build": "webpack",
+    "preversion": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,9 +17,20 @@
     "name": "Tobie Morgan Hitchcock",
     "url": "https://abcum.com"
   },
+  "files": [
+    "dist/",
+    "lib/"
+  ],
   "license": "MIT",
   "dependencies": {
     "ws": "^7.1.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  }
 }
