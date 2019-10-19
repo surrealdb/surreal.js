@@ -10,10 +10,13 @@
     "type": "git",
     "url": "https://github.com/surrealdb/surreal.js.git"
   },
-  "author": "Tobie Morgan Hitchcock <tobie@abcum.com>",
+  "author": {
+    "name": "Tobie Morgan Hitchcock",
+    "url": "https://abcum.com"
+  },
   "license": "MIT",
   "dependencies": {
-    "ws": "^4.0.0"
+    "ws": "^7.1.2"
   },
   "devDependencies": {}
 }
