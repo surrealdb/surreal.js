@@ -4,6 +4,7 @@ module.exports = {
 	entry: './index.js',
 	output: {
 		path: path.join(__dirname, 'dist'),
+		libraryExport: 'default',
 		libraryTarget: 'window',
 		library: 'Surreal'
 	},
@@ -19,7 +20,10 @@ module.exports = {
 				loader: 'babel-loader',
 				options: {
 					presets: ['@babel/preset-env'],
-					plugins: ['@babel/plugin-proposal-class-properties']
+					plugins: [
+						'@babel/plugin-proposal-class-properties',
+						'@babel/plugin-proposal-private-methods',
+					],
 				}
 			}
 		}]
