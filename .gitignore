@@ -32,7 +32,7 @@ Temporary Items
 # Folders
 # -----------------------------------
 
-app/
+lib/
 dev/
 dist/
 vendor/

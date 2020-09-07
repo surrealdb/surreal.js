@@ -2,7 +2,7 @@
   "name": "surreal.js",
   "version": "0.4.11",
   "description": "Javascript driver for SurrealDB",
-  "main": "index.js",
+  "main": "lib/main.js",
   "browser": "dist/main.js",
   "scripts": {
     "build": "webpack --mode=production",
@@ -19,7 +19,8 @@
   },
   "files": [
     "dist/",
-    "lib/"
+    "lib/",
+    "src/"
   ],
   "license": "MIT",
   "dependencies": {
