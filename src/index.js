@@ -1,6 +1,5 @@
 import guid from './utils/guid';
 import conf from './utils/conf';
-import Ping from './classes/ping';
 import Live from './classes/live';
 import errors from './errors/index';
 import Socket from './classes/socket';
@@ -94,12 +93,6 @@ export default class Surreal extends Emitter {
 
 	connect(url, opt) {
 
-		// Create a new poller for sending ping
-		// requests in a repeated manner in order
-		// to keep loadbalancing requests open.
-
-		this.#ps = new Ping(5000, () => this.ping() );
-
 		// Next we setup the websocket connection
 		// and listen for events on the socket,
 		// specifying whether logging is enabled.
@@ -181,19 +174,8 @@ export default class Surreal extends Emitter {
 	}
 
 	// --------------------------------------------------
-	// Invalidated queried
+	// Invalidated queries
 	// --------------------------------------------------
-
-	ping() {
-		let id = guid();
-		return this.#ws.ready.then( () => {
-			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'ping');
-				this.once(id, e => this.#return(e, resolve, reject) );
-				this.#send(id, "Ping");
-			});
-		});
-	}
 
 	info() {
 		let id = guid();
