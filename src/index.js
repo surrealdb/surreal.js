@@ -77,8 +77,6 @@ export default class Surreal extends Emitter {
 	//
 	// ------------------------------
 
-	#ps = undefined;
-
 	#ws = undefined;
 
 	constructor(url, opt) {
@@ -112,7 +110,6 @@ export default class Surreal extends Emitter {
 		// open live queries, and trigger.
 
 		this.#ws.on('open', () => {
-			this.#ps.start();
 			this.emit('open');
 			this.emit('opened');
 		});
@@ -122,7 +119,6 @@ export default class Surreal extends Emitter {
 		// stop live queries, and trigger.
 
 		this.#ws.on('close', () => {
-			this.#ps.clear();
 			this.emit('close');
 			this.emit('closed');
 		});
