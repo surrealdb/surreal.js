@@ -156,7 +156,8 @@ export default class Surreal extends Emitter {
 	// --------------------------------------------------
 
 	close() {
-		return this.#ws.close();
+		this.#ws.removeAllListeners();
+		this.#ws.close();
 	}
 
 	sync(q, v={}) {
