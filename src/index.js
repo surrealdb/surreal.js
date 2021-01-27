@@ -430,7 +430,7 @@ export default class Surreal extends Emitter {
 			default:
 				if (typeof t === "string") {
 					return r && r.length ? resolve(r[0]) : reject(
-						new Surreal.RecordError("Record not found")
+						new Surreal.RecordError(`Record not found: ${t}`)
 					);
 				} else {
 					return r && r.length ? resolve(r) : resolve([]);
