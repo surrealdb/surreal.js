@@ -33,4 +33,16 @@ export default class Emitter {
 		}
 	}
 
+	removeAllListeners(e) {
+		if (e) {
+			if (typeof this.#events[e] === 'object') {
+				this.#events[e] = [];
+			}
+		} else {
+			for (const e in this.#events) {
+				this.#events[e] = [];
+			}
+		}
+	}
+
 }
