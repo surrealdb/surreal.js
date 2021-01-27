@@ -1,6 +1,6 @@
 {
   "name": "surreal.js",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "description": "Javascript driver for SurrealDB",
   "main": "lib/main.js",
   "browser": "dist/main.js",
