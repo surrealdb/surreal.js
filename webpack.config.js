@@ -10,10 +10,12 @@ module.exports = [
 			libraryTarget: 'window',
 			library: 'Surreal'
 		},
-		devtool: 'none',
-		node: {
-			fs: false,
-			Buffer: false
+		devtool: false,
+		resolve: {
+			fallback: {
+				fs: false,
+				Buffer: false,
+			}
 		},
 		module: {
 			rules: [{
@@ -41,10 +43,12 @@ module.exports = [
 			libraryTarget: 'umd',
 			library: 'Surreal'
 		},
-		devtool: 'none',
-		node: {
-			fs: false,
-			Buffer: false
+		devtool: false,
+		resolve: {
+			fallback: {
+				fs: false,
+				Buffer: false,
+			}
 		},
 		module: {
 			rules: [{
