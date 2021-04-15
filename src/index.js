@@ -255,6 +255,17 @@ export default class Surreal extends Emitter {
 		});
 	}
 
+	let(k, v=null) {
+		let id = guid();
+		return this.wait().then( () => {
+			return new Promise( (resolve, reject) => {
+				if (DEBUG) console.log('SURREAL:', 'let', k, v);
+				this.once(id, e => this.#return(e, resolve, reject) );
+				this.#send(id, "Let", [k, v]);
+			});
+		});
+	}
+
 	query(q, v={}) {
 		let id = guid();
 		return this.wait().then( () => {
