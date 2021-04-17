@@ -5,8 +5,6 @@ import errors from './errors/index';
 import Socket from './classes/socket';
 import Emitter from './classes/emitter';
 
-const DEBUG = process && process.env && process.env.DEBUG;
-
 const FAIL = new Error('No authentication token');
 
 const AS = "wss://as.surreal.io/rpc";
@@ -178,7 +176,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.#ws.ready.then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'info');
 				this.once(id, e => this.#return(e, resolve, reject) );
 				this.#send(id, "Info");
 			});
@@ -189,7 +186,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.#ws.ready.then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'signup', v);
 				this.once(id, e => this.#signup(e, resolve, reject) );
 				this.#send(id, "Signup", [v]);
 			});
@@ -200,7 +196,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.#ws.ready.then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'signin', v);
 				this.once(id, e => this.#signin(e, resolve, reject) );
 				this.#send(id, "Signin", [v]);
 			});
@@ -211,7 +206,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.#ws.ready.then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'invalidate', t);
 				this.once(id, e => this.#auth(e, resolve, reject) );
 				this.#send(id, "Invalidate");
 			});
@@ -222,7 +216,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.#ws.ready.then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'authenticate', t);
 				this.once(id, e => this.#auth(e, resolve, reject) );
 				this.#send(id, "Authenticate", [t]);
 			});
@@ -237,7 +230,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'live', c);
 				this.once(id, e => this.#return(e, resolve, reject) );
 				this.#send(id, "Live", [c]);
 			});
@@ -248,7 +240,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'kill', q);
 				this.once(id, e => this.#return(e, resolve, reject) );
 				this.#send(id, "Kill", [q]);
 			});
@@ -259,7 +250,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'let', k, v);
 				this.once(id, e => this.#return(e, resolve, reject) );
 				this.#send(id, "Let", [k, v]);
 			});
@@ -270,7 +260,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'query', q, v);
 				this.once(id, e => this.#return(e, resolve, reject) );
 				this.#send(id, "Query", [q, v]);
 			});
@@ -281,7 +270,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'select', c, t);
 				this.once(id, e => this.#result(e, t, 'select', resolve, reject) );
 				this.#send(id, "Select", [c, t]);
 			});
@@ -292,7 +280,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'create', c, t, d);
 				this.once(id, e => this.#result(e, t, 'create', resolve, reject) );
 				this.#send(id, "Create", [c, t, d]);
 			});
@@ -303,7 +290,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'update', c, t, d);
 				this.once(id, e => this.#result(e, t, 'update', resolve, reject) );
 				this.#send(id, "Update", [c, t, d]);
 			});
@@ -314,7 +300,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'change', c, t, d);
 				this.once(id, e => this.#result(e, t, 'change', resolve, reject) );
 				this.#send(id, "Change", [c, t, d]);
 			});
@@ -325,7 +310,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'modify', c, t, d);
 				this.once(id, e => this.#result(e, t, 'modify', resolve, reject) );
 				this.#send(id, "Modify", [c, t, d]);
 			});
@@ -336,7 +320,6 @@ export default class Surreal extends Emitter {
 		let id = guid();
 		return this.wait().then( () => {
 			return new Promise( (resolve, reject) => {
-				if (DEBUG) console.log('SURREAL:', 'delete', c, t);
 				this.once(id, e => this.#result(e, t, 'delete', resolve, reject) );
 				this.#send(id, "Delete", [c, t]);
 			});
