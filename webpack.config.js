@@ -11,12 +11,6 @@ module.exports = [
 			library: 'Surreal'
 		},
 		devtool: false,
-		resolve: {
-			fallback: {
-				fs: false,
-				Buffer: false,
-			}
-		},
 		module: {
 			rules: [{
 				test: /\.js$/,
@@ -44,12 +38,6 @@ module.exports = [
 			library: 'Surreal'
 		},
 		devtool: false,
-		resolve: {
-			fallback: {
-				fs: false,
-				Buffer: false,
-			}
-		},
 		module: {
 			rules: [{
 				test: /\.js$/,
