@@ -416,19 +416,37 @@ export default class Surreal extends Emitter {
 			switch (a) {
 			case 'delete':
 				return resolve();
-			case 'modify':
-				return r && r.length ? resolve(r[0]) : resolve([]);
 			case 'create':
-				return r && r.length ? resolve(r[0]) : resolve({});
+				if (typeof t === "string") {
+					return r && r.length ? resolve(r[0]) : reject(
+						new Surreal.PermsError(`Unable to create record: ${t}`)
+					);
+				} else {
+					return resolve(r);
+				}
 			case 'update':
-				return r && r.length ? resolve(r[0]) : resolve({});
+				if (typeof t === "string") {
+					return r && r.length ? resolve(r[0]) : reject(
+						new Surreal.PermsError(`Unable to update record: ${t}`)
+					);
+				} else {
+					return resolve(r);
+				}
+			case 'modify':
+				if (typeof t === "string") {
+					return r && r.length ? resolve(r[0]) : reject(
+						new Surreal.PermsError(`Unable to update record: ${t}`)
+					);
+				} else {
+					return resolve(r);
+				}
 			default:
 				if (typeof t === "string") {
 					return r && r.length ? resolve(r[0]) : reject(
 						new Surreal.RecordError(`Record not found: ${t}`)
 					);
 				} else {
-					return r && r.length ? resolve(r) : resolve([]);
+					return resolve(r);
 				}
 			}
 		}
