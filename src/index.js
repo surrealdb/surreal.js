@@ -417,13 +417,9 @@ export default class Surreal extends Emitter {
 			case 'delete':
 				return resolve();
 			case 'create':
-				if (typeof t === "string") {
-					return r && r.length ? resolve(r[0]) : reject(
-						new Surreal.PermsError(`Unable to create record: ${t}`)
-					);
-				} else {
-					return resolve(r);
-				}
+				return r && r.length ? resolve(r[0]) : reject(
+					new Surreal.PermsError(`Unable to create record: ${t}`)
+				);
 			case 'update':
 				if (typeof t === "string") {
 					return r && r.length ? resolve(r[0]) : reject(
