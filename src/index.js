@@ -426,7 +426,7 @@ export default class Surreal extends Emitter {
 						new Surreal.PermsError(`Unable to update record: ${t}`)
 					);
 				} else {
-					return resolve(r);
+					return r && r.length ? resolve(r) : resolve([]);
 				}
 			case 'modify':
 				if (typeof t === "string") {
@@ -434,7 +434,7 @@ export default class Surreal extends Emitter {
 						new Surreal.PermsError(`Unable to update record: ${t}`)
 					);
 				} else {
-					return resolve(r);
+					return r && r.length ? resolve(r) : resolve([]);
 				}
 			default:
 				if (typeof t === "string") {
@@ -442,7 +442,7 @@ export default class Surreal extends Emitter {
 						new Surreal.RecordError(`Record not found: ${t}`)
 					);
 				} else {
-					return resolve(r);
+					return r && r.length ? resolve(r) : resolve([]);
 				}
 			}
 		}
